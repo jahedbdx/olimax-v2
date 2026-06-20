@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Olimax — Best AI & Digital Tools, Reviewed</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0d0d14;
+  --ink2:#1a1a2e;
+  --card:#1e1e30;
+  --card2:#252540;
+  --border:rgba(255,255,255,0.07);
+  --border2:rgba(255,255,255,0.13);
+  --lime:#b5ff47;
+  --lime-dim:rgba(181,255,71,0.12);
+  --lime-dim2:rgba(181,255,71,0.22);
+  --text:#eeeeff;
+  --muted:rgba(238,238,255,0.5);
+  --dim:rgba(238,238,255,0.28);
+  --head:'Plus Jakarta Sans',sans-serif;
+  --body:'Inter',sans-serif;
+  --r:12px;
+  --rlg:20px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--text);font-family:var(--body);font-size:16px;line-height:1.7;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px;background:rgba(13,13,20,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.logo{font-family:var(--head);font-size:1.4rem;font-weight:800;color:var(--text);text-decoration:none;letter-spacing:-0.5px}
+.logo span{color:var(--lime)}
+.nav-links{display:flex;gap:1.8rem;list-style:none}
+.nav-links a{font-size:0.85rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--lime);color:#0d0d14;border:none;border-radius:8px;padding:.45rem 1.1rem;font-size:.85rem;font-weight:700;font-family:var(--head);cursor:pointer;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+.hamburger{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer}
+@media(max-width:700px){.nav-links{display:none}.hamburger{display:block}}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:120px 5% 80px;position:relative;overflow:hidden}
+.hero-grid-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(181,255,71,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(181,255,71,0.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(181,255,71,0.08) 0%,transparent 70%);top:-100px;right:-150px;pointer-events:none}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;background:var(--lime-dim);border:1px solid rgba(181,255,71,0.25);border-radius:100px;padding:5px 16px;font-size:.75rem;font-weight:500;color:var(--lime);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1.8rem}
+.eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--lime);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-family:var(--head);font-size:clamp(2.8rem,6.5vw,5.5rem);font-weight:800;line-height:1.05;letter-spacing:-2px;max-width:800px;margin-bottom:1.5rem}
+.hero h1 .hl{color:var(--lime)}
+.hero p{font-size:1.1rem;color:var(--muted);max-width:520px;margin-bottom:2.5rem;line-height:1.8}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-lime{background:var(--lime);color:#0d0d14;border:none;border-radius:10px;padding:.85rem 2rem;font-size:1rem;font-weight:700;font-family:var(--head);cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .2s}
+.btn-lime:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(181,255,71,0.3)}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--border2);border-radius:10px;padding:.85rem 2rem;font-size:1rem;font-weight:500;cursor:pointer;text-decoration:none;transition:background .2s,border-color .2s}
+.btn-outline:hover{background:var(--card);border-color:var(--border2)}
+.hero-trust{display:flex;align-items:center;gap:1rem;margin-top:2.5rem;flex-wrap:wrap}
+.hero-trust span{font-size:.8rem;color:var(--muted)}
+.trust-pills{display:flex;gap:.5rem;flex-wrap:wrap}
+.trust-pill{background:var(--card);border:1px solid var(--border);border-radius:100px;padding:4px 12px;font-size:.75rem;color:var(--dim)}
+
+/* TICKER */
+.ticker-wrap{background:var(--lime);overflow:hidden;padding:.6rem 0;white-space:nowrap}
+.ticker-track{display:inline-flex;animation:ticker 30s linear infinite}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker-item{font-family:var(--head);font-size:.78rem;font-weight:700;color:#0d0d14;padding:0 2.5rem;letter-spacing:.05em;text-transform:uppercase}
+.ticker-sep{color:rgba(13,13,20,0.4);padding-right:0}
+
+/* FEATURED */
+#featured{padding:90px 5%}
+.section-eye{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--lime);display:block;margin-bottom:.6rem}
+.section-h{font-family:var(--head);font-size:clamp(1.7rem,3.2vw,2.5rem);font-weight:800;letter-spacing:-0.5px;margin-bottom:.8rem}
+.section-p{color:var(--muted);font-size:.95rem;max-width:440px;margin-bottom:2.8rem}
+.featured-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem}
+
+/* PRODUCT CARD */
+.pcard{background:var(--card);border:1px solid var(--border);border-radius:var(--rlg);padding:1.75rem;display:flex;flex-direction:column;gap:0;transition:border-color .25s,transform .2s;position:relative}
+.pcard:hover{border-color:rgba(181,255,71,0.3);transform:translateY(-3px)}
+.pcard-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem}
+.pcard-logo{width:48px;height:48px;border-radius:10px;background:var(--card2);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+.pcard-rating{display:flex;align-items:center;gap:5px}
+.stars-sm{font-size:.75rem;color:#fbbf24}
+.rating-num{font-size:.8rem;color:var(--muted)}
+.pcard-badge{position:absolute;top:1.25rem;right:1.25rem;font-size:.65rem;font-weight:700;padding:3px 10px;border-radius:100px;text-transform:uppercase;letter-spacing:.06em}
+.b-editor{background:rgba(181,255,71,0.12);color:var(--lime)}
+.b-hot{background:rgba(251,113,133,0.15);color:#fb7185}
+.b-deal{background:rgba(251,191,36,0.12);color:#fbbf24}
+.pcard h3{font-family:var(--head);font-size:1.05rem;font-weight:700;margin-bottom:.4rem}
+.pcard-tagline{font-size:.85rem;color:var(--muted);margin-bottom:1rem;line-height:1.55}
+.pcard-tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.25rem}
+.tag{background:var(--card2);border:1px solid var(--border);border-radius:100px;padding:3px 10px;font-size:.72rem;color:var(--dim)}
+.pcard-divider{border:none;border-top:1px solid var(--border);margin-bottom:1.25rem}
+.pcard-foot{display:flex;justify-content:space-between;align-items:center}
+.pcard-price{font-size:.82rem;color:var(--muted)}
+.pcard-price strong{color:var(--text);font-size:.95rem}
+.pcard-cta{background:var(--lime-dim);color:var(--lime);border:1px solid rgba(181,255,71,0.25);border-radius:8px;padding:.4rem 1rem;font-size:.82rem;font-weight:700;font-family:var(--head);cursor:pointer;text-decoration:none;transition:background .2s}
+.pcard-cta:hover{background:var(--lime-dim2)}
+
+/* CATEGORY FILTER */
+.filter-row{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.filt{background:var(--card);border:1px solid var(--border);border-radius:100px;padding:.4rem 1rem;font-size:.82rem;color:var(--muted);cursor:pointer;transition:all .18s;user-select:none}
+.filt:hover,.filt.active{background:var(--lime-dim2);border-color:rgba(181,255,71,0.4);color:var(--lime)}
+
+/* REVIEW DEEP-DIVE */
+#reviews{background:var(--ink2);padding:90px 5%}
+.review-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+@media(max-width:700px){.review-grid{grid-template-columns:1fr}}
+.rcard{background:var(--card);border:1px solid var(--border);border-radius:var(--rlg);padding:2rem}
+.rcard-head{display:flex;gap:1rem;align-items:center;margin-bottom:1.25rem}
+.rcard-icon{width:50px;height:50px;border-radius:12px;background:var(--card2);font-size:1.5rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.rcard h3{font-family:var(--head);font-size:1rem;font-weight:700}
+.rcard-sub{font-size:.8rem;color:var(--muted)}
+.pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1.25rem}
+.pros,.cons{background:var(--card2);border-radius:10px;padding:.9rem}
+.pros h5,.cons h5{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
+.pros h5{color:var(--lime)}
+.cons h5{color:#fb7185}
+.pros ul,.cons ul{list-style:none;display:flex;flex-direction:column;gap:.3rem}
+.pros li,.cons li{font-size:.82rem;color:var(--muted);display:flex;gap:6px}
+.pros li::before{content:"✓";color:var(--lime);font-weight:700;flex-shrink:0}
+.cons li::before{content:"✗";color:#fb7185;font-weight:700;flex-shrink:0}
+.verdict{background:var(--lime-dim);border:1px solid rgba(181,255,71,0.2);border-radius:10px;padding:.9rem 1rem;font-size:.85rem;color:var(--text);margin-bottom:1.25rem;line-height:1.6}
+.verdict strong{color:var(--lime)}
+.rcard-cta{display:block;text-align:center;background:var(--lime);color:#0d0d14;border-radius:9px;padding:.65rem;font-size:.88rem;font-weight:700;font-family:var(--head);text-decoration:none;transition:opacity .2s}
+.rcard-cta:hover{opacity:.85}
+
+/* CATEGORIES HUB */
+#categories{padding:90px 5%}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem}
+.cat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--rlg);padding:1.5rem 1.25rem;text-decoration:none;display:flex;flex-direction:column;gap:.5rem;transition:border-color .2s,transform .2s}
+.cat-card:hover{border-color:rgba(181,255,71,0.3);transform:translateY(-3px)}
+.cat-emoji{font-size:1.8rem}
+.cat-name{font-family:var(--head);font-size:.95rem;font-weight:700;color:var(--text)}
+.cat-count{font-size:.78rem;color:var(--muted)}
+
+/* COMPARISON TABLE */
+#compare{background:var(--ink2);padding:90px 5%}
+.table-scroll{overflow-x:auto;border-radius:var(--rlg);border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;min-width:600px}
+thead{background:var(--card2)}
+thead th{font-family:var(--head);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);padding:1rem 1.25rem;text-align:left;white-space:nowrap}
+tbody tr{border-top:1px solid var(--border);transition:background .15s}
+tbody tr:hover{background:var(--card)}
+td{padding:.9rem 1.25rem;font-size:.88rem;vertical-align:middle}
+.td-name{font-weight:600;font-family:var(--head);font-size:.92rem}
+.td-cat{color:var(--muted);font-size:.8rem}
+.td-price{color:var(--text)}
+.td-comm{color:var(--lime);font-weight:700}
+.check{color:var(--lime);font-size:1rem}
+.cross{color:#fb7185;font-size:1rem}
+.tbl-link{color:var(--lime);text-decoration:none;font-size:.8rem;font-weight:700;white-space:nowrap}
+.tbl-link:hover{text-decoration:underline}
+
+/* NEWSLETTER */
+#newsletter{padding:90px 5%}
+.nl-box{background:var(--card);border:1px solid var(--border);border-radius:var(--rlg);padding:4rem 3rem;max-width:680px;margin:0 auto;text-align:center;position:relative;overflow:hidden}
+.nl-glow{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(181,255,71,0.07) 0%,transparent 70%);top:-100px;left:50%;transform:translateX(-50%);pointer-events:none}
+.nl-box h2{font-family:var(--head);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;letter-spacing:-0.5px;margin-bottom:.75rem}
+.nl-box p{color:var(--muted);font-size:.95rem;margin-bottom:2rem}
+.nl-form{display:flex;gap:.75rem;max-width:440px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+.nl-form input{flex:1;min-width:210px;background:var(--ink);border:1px solid var(--border2);border-radius:9px;padding:.75rem 1.1rem;font-size:.9rem;color:var(--text);outline:none;transition:border-color .2s;font-family:var(--body)}
+.nl-form input:focus{border-color:rgba(181,255,71,0.4)}
+.nl-form input::placeholder{color:var(--dim)}
+.nl-form button{background:var(--lime);color:#0d0d14;border:none;border-radius:9px;padding:.75rem 1.5rem;font-size:.9rem;font-weight:700;font-family:var(--head);cursor:pointer;transition:opacity .2s;white-space:nowrap}
+.nl-form button:hover{opacity:.85}
+.nl-note{font-size:.75rem;color:var(--dim);margin-top:.9rem}
+
+/* DISCLOSURE */
+.disclosure{background:var(--ink2);border-top:1px solid var(--border);padding:1.5rem 5%;text-align:center}
+.disclosure p{font-size:.78rem;color:var(--dim);max-width:700px;margin:0 auto}
+
+/* FOOTER */
+footer{background:var(--ink2);border-top:1px solid var(--border);padding:3rem 5% 2rem}
+.footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:2rem;margin-bottom:2.5rem}
+.footer-brand p{font-size:.82rem;color:var(--muted);max-width:240px;margin-top:.6rem}
+.footer-col h5{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);margin-bottom:.85rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.footer-col ul a{font-size:.85rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.footer-col ul a:hover{color:var(--text)}
+.footer-bottom{border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.78rem;color:var(--dim)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">oli<span>max</span></a>
+  <ul class="nav-links">
+    <li><a href="#featured">Top Picks</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#categories">Categories</a></li>
+    <li><a href="#compare">Compare</a></li>
+    <li><a href="#newsletter">Newsletter</a></li>
+  </ul>
+  <a href="#newsletter" class="nav-cta">Free Deals →</a>
+  <button class="hamburger">☰</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="eyebrow"><span class="eyebrow-dot"></span>Independent Reviews &amp; Deals</div>
+  <h1>Find the <span class="hl">Best AI &amp; Digital Tools</span><br/>Before You Buy</h1>
+  <p>Olimax tests and reviews the top tech and digital products — AI tools, hosting, SaaS, marketing software — so you know exactly what's worth your money.</p>
+  <div class="hero-btns">
+    <a href="#featured" class="btn-lime">See Top Picks</a>
+    <a href="#reviews" class="btn-outline">Read Reviews</a>
+  </div>
+  <div class="hero-trust">
+    <span>Trusted by readers in 40+ countries</span>
+    <div class="trust-pills">
+      <span class="trust-pill">✓ Honest Reviews</span>
+      <span class="trust-pill">✓ No Paid Placement</span>
+      <span class="trust-pill">✓ Updated Weekly</span>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">AI Writing Tools</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Cloud Hosting</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Email Marketing</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">SEO Software</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">VPN & Security</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Video Creation</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Website Builders</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">CRM Tools</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Design Software</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">AI Chatbots</span><span class="ticker-sep">·</span>
+    <!-- duplicate for seamless loop -->
+    <span class="ticker-item">AI Writing Tools</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Cloud Hosting</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Email Marketing</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">SEO Software</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">VPN & Security</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Video Creation</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Website Builders</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">CRM Tools</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">Design Software</span><span class="ticker-sep">·</span>
+    <span class="ticker-item">AI Chatbots</span><span class="ticker-sep">·</span>
+  </div>
+</div>
+
+<!-- FEATURED PRODUCTS -->
+<section id="featured">
+  <span class="section-eye">Editor's Picks</span>
+  <h2 class="section-h">Top Recommended Tools This Month</h2>
+  <p class="section-p">Hand-tested products we'd actually pay for ourselves. Links marked with ✦ are affiliate links.</p>
+
+  <div class="filter-row" id="filters">
+    <span class="filt active" data-cat="all">All</span>
+    <span class="filt" data-cat="ai">🤖 AI Tools</span>
+    <span class="filt" data-cat="hosting">☁️ Hosting</span>
+    <span class="filt" data-cat="seo">📈 SEO</span>
+    <span class="filt" data-cat="email">✉️ Email</span>
+    <span class="filt" data-cat="security">🔐 Security</span>
+    <span class="filt" data-cat="design">🎨 Design</span>
+  </div>
+
+  <div class="featured-grid" id="product-grid">
+
+    <div class="pcard" data-cat="ai">
+      <span class="pcard-badge b-editor">✦ Editor's Choice</span>
+      <div class="pcard-top">
+        <div class="pcard-logo">🤖</div>
+        <div class="pcard-rating"><span class="stars-sm">★★★★★</span><span class="rating-num">4.9/5</span></div>
+      </div>
+      <h3>Jasper AI — Content Writer</h3>
+      <p class="pcard-tagline">The most polished AI writing assistant we've tested. Brilliant for blog posts, ads, and email copy with brand voice control.</p>
+      <div class="pcard-tags"><span class="tag">AI Writing</span><span class="tag">Marketing</span><span class="tag">Templates</span></div>
+      <hr class="pcard-divider"/>
+      <div class="pcard-foot">
+        <div class="pcard-price">From <strong>$39/mo</strong></div>
+        <a href="#" class="pcard-cta">Try Free ✦</a>
+      </div>
+    </div>
+
+    <div class="pcard" data-cat="hosting">
+      <span class="pcard-badge b-hot">🔥 Best Value</span>
+      <div class="pcard-top">
+        <div class="pcard-logo">☁️</div>
+        <div class="pcard-rating"><span class="stars-sm">★★★★★</span><span class="rating-num">4.8/5</span></div>
+      </div>
+      <h3>Cloudways — Managed Cloud Hosting</h3>
+      <p class="pcard-tagline">Fastest managed hosting we've benchmarked. Built on DigitalOcean, Linode &amp; AWS. One-click WordPress, zero server headaches.</p>
+      <div class="pcard-tags"><span class="tag">Cloud Hosting</span><span class="tag">WordPress</span><span class="tag">Agency</span></div>
+      <hr class="pcard-divider"/>
+      <div class="pcard-foot">
+        <div class="pcard-price">From <strong>$14/mo</strong></div>
+        <a href="#" class="pcard-cta">Start Free Trial ✦</a>
+      </div>
+    </div>
+
+    <div class="pcard" data-cat="seo">
+      <span class="pcard-badge b-editor">✦ Editor's Choice</span>
+      <div class="pcard-top">
+        <div class="pcard-logo">📈</div>
+        <div class="pcard-rating"><span class="stars-sm">★★★★½</span><span class="rating-num">4.7/5</span></div>
+      </div>
+      <h3>Semrush — SEO & Marketing Suite</h3>
+      <p class="pcard-tagline">The all-in-one SEO platform used by 10M+ marketers. Unbeatable keyword research, backlink audits, and competitor spying.</p>
+      <div class="pcard-tags"><span class="tag">SEO</span><span class="tag">Analytics</span><span class="tag">Keywords</span></div>
+      <hr class="pcard-divider"/>
+      <div class="pcard-foot">
+        <div class="pcard-price">From <strong>$129/mo</strong></div>
+        <a href="#" class="pcard-cta">Try 7 Days Free ✦</a>
+      </div>
+    </div>
+
+    <div class="pcard" data-cat="email">
+      <span class="pcard-badge b-deal">💰 Special Deal</span>
+      <div class="pcard-top">
+        <div class="pcard-logo">✉️</div>
+        <div class="pcard-rating"><span class="stars-sm">★★★★★</span><span class="rating-num">4.8/5</span></div>
+      </div>
+      <h3>ActiveCampaign — Email Automation</h3>
+      <p class="pcard-tagline">Our pick for serious email marketers. Deep automation flows, CRM built-in, and the highest deliverability of any tool we've tested.</p>
+      <div class="pcard-tags"><span class="tag">Email</span><span class="tag">Automation</span><span class="tag">CRM</span></div>
+      <hr class="pcard-divider"/>
+      <div class="pcard-foot">
+        <div class="pcard-price">From <strong>$29/mo</strong></div>
+        <a href="#" class="pcard-cta">Get 14-Day Free ✦</a>
+      </div>
+    </div>
+
+    <div class="pcard" data-cat="security">
+      <div class="pcard-top">
+        <div class="pcard-logo">🔐</div>
+        <div class="pcard-rating"><span class="stars-sm">★★★★½</span><span class="rating-num">4.6/5</span></div>
+      </div>
+      <h3>NordVPN — Privacy & Security</h3>
+      <p class="pcard-tagline">The VPN we recommend to everyone. Lightning fast, no-log policy verified, and works reliably in restricted regions.</p>
+      <div class="pcard-tags"><span class="tag">VPN</span><span class="tag">Privacy</span><span class="tag">Security</span></div>
+      <hr class="pcard-divider"/>
+      <div class="pcard-foot">
+        <div class="pcard-price">From <strong>$3.99/mo</strong></div>
+        <a href="#" class="pcard-cta">Get 66% Off ✦</a>
+      </div>
+    </div>
+
+    <div class="pcard" data-cat="design">
+      <span class="pcard-badge b-hot">🔥 Trending</span>
+      <div class="pcard-top">
+        <div class="pcard-logo">🎨</div>
+        <div class="pcard-rating"><span class="stars-sm">★★★★★</span><span class="rating-num">4.9/5</span></div>
+      </div>
+      <h3>Canva Pro — Design Platform</h3>
+      <p class="pcard-tagline">Design tool everyone can actually use. Pro unlocks magic AI features, brand kits, and bulk content creation that saves hours every week.</p>
+      <div class="pcard-tags"><span class="tag">Design</span><span class="tag">AI Features</span><span class="tag">Social Media</span></div>
+      <hr class="pcard-divider"/>
+      <div class="pcard-foot">
+        <div class="pcard-price">From <strong>$15/mo</strong></div>
+        <a href="#" class="pcard-cta">Try Pro Free ✦</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DETAILED REVIEWS -->
+<section id="reviews">
+  <span class="section-eye">In-Depth</span>
+  <h2 class="section-h">Honest Reviews, Real Testing</h2>
+  <p class="section-p">We actually use these tools for weeks before writing a word. No fluff.</p>
+
+  <div class="review-grid">
+
+    <div class="rcard">
+      <div class="rcard-head">
+        <div class="rcard-icon">🤖</div>
+        <div>
+          <h3>Jasper AI — Full Review</h3>
+          <div class="rcard-sub">Tested for 30 days across 5 content types</div>
+        </div>
+      </div>
+      <div class="pros-cons">
+        <div class="pros">
+          <h5>Pros</h5>
+          <ul>
+            <li>Brand voice stays consistent</li>
+            <li>60+ ready-made templates</li>
+            <li>SEO mode built right in</li>
+            <li>Team collaboration tools</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h5>Cons</h5>
+          <ul>
+            <li>Costs more than rivals</li>
+            <li>Needs fact-checking</li>
+            <li>Learning curve on flows</li>
+          </ul>
+        </div>
+      </div>
+      <div class="verdict"><strong>Verdict:</strong> If you publish more than 10 articles per month, Jasper pays for itself. It's the most brand-consistent AI writer we've found — not the cheapest, but the one we'd actually keep paying for.</div>
+      <a href="#" class="rcard-cta">Read Full Review + Get Free Trial ✦</a>
+    </div>
+
+    <div class="rcard">
+      <div class="rcard-head">
+        <div class="rcard-icon">☁️</div>
+        <div>
+          <h3>Cloudways — Full Review</h3>
+          <div class="rcard-sub">Benchmarked load times across 3 data centers</div>
+        </div>
+      </div>
+      <div class="pros-cons">
+        <div class="pros">
+          <h5>Pros</h5>
+          <ul>
+            <li>Average 95ms response time</li>
+            <li>No server management needed</li>
+            <li>Pay-as-you-go pricing</li>
+            <li>24/7 expert live chat</li>
+          </ul>
+        </div>
+        <div class="cons">
+          <h5>Cons</h5>
+          <ul>
+            <li>No domain registration</li>
+            <li>Email hosting extra</li>
+            <li>Can get pricey at scale</li>
+          </ul>
+        </div>
+      </div>
+      <div class="verdict"><strong>Verdict:</strong> The best managed hosting for agencies and growing sites that want raw speed without hiring a sysadmin. Our site loaded 2.3× faster after switching. Highly recommended for WordPress power users.</div>
+      <a href="#" class="rcard-cta">Read Full Review + Start Free Trial ✦</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CATEGORIES HUB -->
+<section id="categories">
+  <span class="section-eye">Browse by Category</span>
+  <h2 class="section-h">Find Tools in Your Niche</h2>
+  <p class="section-p">Every category has been researched and reviewed — click to explore the best options.</p>
+  <div class="cat-grid">
+    <a href="#" class="cat-card"><span class="cat-emoji">🤖</span><span class="cat-name">AI Tools</span><span class="cat-count">24 reviews</span></a>
+    <a href="#" class="cat-card"><span class="cat-emoji">☁️</span><span class="cat-name">Cloud Hosting</span><span class="cat-count">18 reviews</span></a>
+    <a href="#" class="cat-card"><span class="cat-emoji">📈</span><span class="cat-name">SEO & Analytics</span><span class="cat-count">15 reviews</span></a>
+    <a href="#" class="cat-card"><span class="cat-emoji">✉️</span><span class="cat-name">Email Marketing</span><span class="cat-count">12 reviews</span></a>
+    <a href="#" class="cat-card"><span class="cat-emoji">🎨</span><span class="cat-name">Design Tools</span><span class="cat-count">10 reviews</span></a>
+    <a href="#" class="cat-card"><span class="cat-emoji">🔐</span><span class="cat-name">Privacy & VPN</span><span class="cat-count">9 reviews</span></a>
+    <a href="#" class="cat-card"><span class="cat-emoji">🛒</span><span class="cat-name">Ecommerce</span><span class="cat-count">11 reviews</span></a>
+    <a href="#" class="cat-card"><span class="cat-emoji">📹</span><span class="cat-name">Video Tools</span><span class="cat-count">8 reviews</span></a>
+    <a href="#" class="cat-card"><span class="cat-emoji">📣</span><span class="cat-name">Social Media</span><span class="cat-count">14 reviews</span></a>
+    <a href="#" class="cat-card"><span class="cat-emoji">💻</span><span class="cat-name">Website Builders</span><span class="cat-count">7 reviews</span></a>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section id="compare">
+  <span class="section-eye">Side by Side</span>
+  <h2 class="section-h">Compare Top Products</h2>
+  <p class="section-p">All the key facts in one place. No need to visit 10 different websites.</p>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Category</th>
+          <th>Starting Price</th>
+          <th>Free Trial</th>
+          <th>Our Score</th>
+          <th>Best For</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="td-name">Jasper AI</td>
+          <td class="td-cat">AI Writing</td>
+          <td class="td-price">$39/mo</td>
+          <td><span class="check">✓ 7 days</span></td>
+          <td><span class="td-comm">★ 4.9</span></td>
+          <td class="td-cat">Content teams</td>
+          <td><a href="#" class="tbl-link">Visit ✦</a></td>
+        </tr>
+        <tr>
+          <td class="td-name">Cloudways</td>
+          <td class="td-cat">Hosting</td>
+          <td class="td-price">$14/mo</td>
+          <td><span class="check">✓ 3 days</span></td>
+          <td><span class="td-comm">★ 4.8</span></td>
+          <td class="td-cat">Agencies, WP</td>
+          <td><a href="#" class="tbl-link">Visit ✦</a></td>
+        </tr>
+        <tr>
+          <td class="td-name">Semrush</td>
+          <td class="td-cat">SEO</td>
+          <td class="td-price">$129/mo</td>
+          <td><span class="check">✓ 7 days</span></td>
+          <td><span class="td-comm">★ 4.7</span></td>
+          <td class="td-cat">SEO professionals</td>
+          <td><a href="#" class="tbl-link">Visit ✦</a></td>
+        </tr>
+        <tr>
+          <td class="td-name">ActiveCampaign</td>
+          <td class="td-cat">Email</td>
+          <td class="td-price">$29/mo</td>
+          <td><span class="check">✓ 14 days</span></td>
+          <td><span class="td-comm">★ 4.8</span></td>
+          <td class="td-cat">Ecommerce, SaaS</td>
+          <td><a href="#" class="tbl-link">Visit ✦</a></td>
+        </tr>
+        <tr>
+          <td class="td-name">NordVPN</td>
+          <td class="td-cat">Security</td>
+          <td class="td-price">$3.99/mo</td>
+          <td><span class="check">✓ 30-day refund</span></td>
+          <td><span class="td-comm">★ 4.6</span></td>
+          <td class="td-cat">Individuals, teams</td>
+          <td><a href="#" class="tbl-link">Visit ✦</a></td>
+        </tr>
+        <tr>
+          <td class="td-name">Canva Pro</td>
+          <td class="td-cat">Design</td>
+          <td class="td-price">$15/mo</td>
+          <td><span class="check">✓ 30 days</span></td>
+          <td><span class="td-comm">★ 4.9</span></td>
+          <td class="td-cat">Creators, marketers</td>
+          <td><a href="#" class="tbl-link">Visit ✦</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <div class="nl-box">
+    <div class="nl-glow"></div>
+    <span class="section-eye" style="text-align:center;display:block">Free Weekly Digest</span>
+    <h2>Get the Best Deals Before Everyone Else</h2>
+    <p>Every Tuesday: the top tool deals, exclusive discount codes, and short honest reviews — straight to your inbox. No spam.</p>
+    <div class="nl-form">
+      <input type="email" placeholder="your@email.com"/>
+      <button type="button">Subscribe Free</button>
+    </div>
+    <p class="nl-note">Join 8,400+ readers. Unsubscribe anytime. Your email is never shared.</p>
+  </div>
+</section>
+
+<!-- AFFILIATE DISCLOSURE -->
+<div class="disclosure">
+  <p><strong>Affiliate Disclosure:</strong> Olimax uses affiliate links marked with ✦. If you buy through our links, we may earn a commission at no extra cost to you. This helps us keep the site free. We only recommend tools we've personally tested and believe in. Our reviews and editorial decisions are never influenced by affiliate relationships.</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="logo">oli<span>max</span></a>
+      <p>Independent reviews of AI and digital tools to help you make smarter buying decisions.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Top Reviews</h5>
+      <ul>
+        <li><a href="#">Best AI Writers 2025</a></li>
+        <li><a href="#">Best Web Hosting</a></li>
+        <li><a href="#">Best SEO Tools</a></li>
+        <li><a href="#">Best Email Platforms</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Categories</h5>
+      <ul>
+        <li><a href="#">AI Tools</a></li>
+        <li><a href="#">Cloud Hosting</a></li>
+        <li><a href="#">Design Software</a></li>
+        <li><a href="#">Security & VPN</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Site</h5>
+      <ul>
+        <li><a href="#">About Olimax</a></li>
+        <li><a href="#">How We Review</a></li>
+        <li><a href="#">Affiliate Disclosure</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Olimax. All rights reserved.</span>
+    <span>✦ = affiliate link</span>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.filt').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filt').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cat = btn.dataset.cat;
+    document.querySelectorAll('.pcard').forEach(card => {
+      card.style.display = (cat === 'all' || card.dataset.cat === cat) ? 'flex' : 'none';
+    });
+  });
+});
+</script>
+</body>
+</html>
